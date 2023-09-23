@@ -1,0 +1,27 @@
+clear
+close all
+clc
+%% 
+DianYun=load('PC.txt');
+X = DianYun(:, 1); X_min=min(X);
+Y = DianYun(:, 2); Y_min=min(Y);
+Z = DianYun(:, 3); Z_min=min(Z);
+cur = DianYun(:, 4);
+X=X-X_min;
+Y=Y-Y_min;
+Z=Z-Z_min;
+DianYun_new=[X Y Z];
+%% 
+L=100;dx=1; 
+U=cell(L/dx,L/dx);
+for x=1:L/dx
+    for y=1:L/dx
+        index1=find(X>dx*(x-1) & X<=dx*x & Y>dx*(y-1) & Y<=dx*y);
+        XX=X(index1);
+        YY=Y(index1);
+        ZZ=Z(index1);
+        curva=cur(index1);
+        DanYuan=[XX YY ZZ curva];
+        U{L/dx+1-y,x}=DanYuan;
+    end
+end

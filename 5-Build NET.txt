@@ -1,0 +1,27 @@
+%%
+inputnum=size(input_train,1);
+hiddennum=Num;
+outputnum=size(output_train,1);
+%% 
+[inputn,inputps]=mapminmax(input_train,0,1);
+outputn = output_train;
+%% 
+net=newff(inputn,outputn,hiddennum,{'tansig','purelin'},'trainlm');
+W1=net.iw{1,1};
+B1=net.b{1};
+W2=net.iw{2,1};
+B2=net.b{2};
+%% 
+net.trainParam.epochs=A; 
+net.trainParam.lr=B;  
+net.trainParam.goal=C; 
+net.trainParam.show=D; 
+net.trainParam.mc=E; 
+net.trainParam.min_grad=F;
+net.trainParam.max_fail=G;
+%% 
+[net,tr]=train(net,inputn,outputn); 
+figure(1),plotperform(tr)
+% 
+train_simu=sim(net,inputn);
+aaa=size(train_simu,2);

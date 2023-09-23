@@ -1,0 +1,33 @@
+input_test=input(:,(1:9999)); 
+output_test=output(:,(1:9999));  
+test_output1=output1(:,(1:9999)); 
+[inputn,inputps]=mapminmax(input_train,0,1);
+[outputn,outputps]=mapminmax(output_train,0,1);
+inputn_test=mapminmax('apply',input_test,inputps);
+an1=sim(net,inputn_test);
+bbb=size(an1,2);
+test_simu=mapminmax('reverse',an1,outputps);
+for i=1:bbb
+    test_output(i)=find(test_simu(:,i)==max(test_simu(:,i)));
+end
+error=test_output-test_output1;
+% PLOT
+for i=1:9999
+    if error(i)==-1
+        lomat(i)=1;
+    elseif error(i)==0
+        lomat(i)=TrainModel(i);
+    elseif error(i)==1
+        lomat(i)=0;
+    end
+end
+lomat(10000)=1;
+area1=1-sum(sum(TrainModel))/10000;
+area=1-sum(sum(lomat))/10000;
+figure
+subplot(1,2,1)
+imshow(TrainModel)
+title(['TrainModel ',num2str(area1),' area1'])
+subplot(1,2,2)
+imshow(lomat)
+title(['Estimate ',num2str(area),' area'])

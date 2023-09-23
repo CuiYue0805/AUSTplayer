@@ -1,0 +1,20 @@
+%%
+for i=1:1:size(output,2)
+    output1(i)=find(output(:,i)==max(output(:,i)));
+end
+%% Selecting
+%Un-con
+index_n=find(output1==1);
+input_n=input(:,index_n);output_n=output(:,index_n);
+%Con
+index_y=find(output1==2);
+input_y=input(:,index_y);output_y=output(:,index_y);
+
+%a,b,no,yes
+input_train=input(:,[index_n(1:no) index_y(1:yes)]);
+output_train=output(:,[index_n(1:no) index_y(1:yes)]); 
+input_test=input(:,(a:b));  
+output_test=output(:,(a:b));  
+
+train_output1=output1(:,[index_n(1:no) index_y(1:yes)]);  
+test_output1=output1(:,(a:b));

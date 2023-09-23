@@ -1,0 +1,38 @@
+%% 
+subplot(1, 2, 1);
+a = imread('12MPa.jpg');
+imshow(a);
+title('picture');
+subplot(1, 2, 2);
+ thresh = graythresh(a);
+b = im2bw(a,thresh);
+imshow(b);
+title('trans');
+B=double(b);
+Logic1=double(b);  
+area=(1-sum(sum(B))/(size(B,1)*(size(B,1))))*100
+%%
+pixel_5=zeros(100,100);
+for i=1:100
+    for j=1:100
+        x_lim=(i-1)*24+1;X_lim=i*24;
+        y_lim=(j-1)*24+1;Y_lim=j*24;
+        pixel_5(i,j)=1-sum(sum(Logic1(x_lim:X_lim,y_lim:Y_lim)))/576;
+    end
+end
+output=zeros(2,10000);
+for i=1:10000
+    if pixel_5(i)<th
+        output(1,i)=1;
+    elseif pixel_5(i)>=th
+        output(2,i)=1;
+    end
+end
+
+TrainModel=zeros(100,100);
+for i=1:10000
+    TrainModel(i)=output(1,i);
+end
+figure
+imshow(TrainModel)
+contact_area=sum(sum(TrainModel))/10000;

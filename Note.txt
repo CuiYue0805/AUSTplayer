@@ -1,0 +1,10 @@
+Manuscript title: Contact characteristics and real contact area prediction of rock fractures: insights from point cloud analysis and artificial neural network
+Code name: PredictingArea
+Authors:
+Yuzong Li*: yzli@aust.edu.cn  State Key Laboratory of Mining Response and Disaster Prevention and Control in Deep Coal Mine, Anhui University of Science and Technology, Huainan 232001, China
+Yue Cui: 2021200513@aust.edu.cn State Key Laboratory of Mining Response and Disaster Prevention and Control in Deep Coal Mine, Anhui University of Science and Technology, Huainan 232001, China
+Yingchun Li*: yingchun_li@dlut.edu.cn State Key Laboratory of Mining Response and Disaster Prevention and Control in Deep Coal Mine, Anhui University of Science and Technology, Huainan 232001, China
+Yuxiang Gan: 2021200481@aust.edu.cn Deep Underground Engineering Research Center, Dalian University of Technology, Dalian, 116024, China
+Note:
+1.Matlab code can be run directly using MATLAB(version 18a or higher).Run the files in order of their names, but the corresponding parameters need to be adjusted accordingly.
+2.The code parameters need to be adjusted in real time according to the different training objects, so there is no fixed value set. The author uses some parameters instead.
